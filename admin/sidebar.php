@@ -14,6 +14,7 @@
         <a href="year.php"><i class="fas fa-calendar"></i>  Academic Year</a>
         <a href="questionYear.php"><i class="fas fa-question-circle"></i>  Questioner</a>
         <a href="criteria.php"><i class="fas fa-check-circle"></i>  Evaluation Criteria</a>
+        <a href="teacher.php"><i class="fas fa-check-circle"></i>  Teacher</a>
         <hr>
         <a href="../index.php"><i class="fas fa-sign-out-alt"></i>  Log out</a>
     </div>

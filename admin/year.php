@@ -146,7 +146,7 @@
                                 <td>" . $row["semester"]. "</td>
                                 <td>" . $row["status"]. "</td>
                                 <td>
-                                    <a href='ManageStudents.php'>view</a>
+                                    
                                     <button class='icon-btn'><i class='fas fa-edit'></i></button>
                                     <button class='icon-btn'><i class='fas fa-trash'></i></button>
                                 </td>
