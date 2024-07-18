@@ -15,28 +15,28 @@ if ($conn->connect_error) {
 }
 
 $error_message = "";
-$email_error = false;
+$id_error = false;
 $password_error = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user = $_POST['email'];
+    $identifier = $_POST['identifier'];
     $pass = $_POST['password'];
 
     $roles = ['admin', 'faculty_list', 'students'];
     $user_found = false;
 
     foreach ($roles as $role) {
-        $sql = "SELECT * FROM $role WHERE email = ?";
+        $sql = ($role == 'admin') ? "SELECT * FROM $role WHERE email = ?" : "SELECT * FROM $role WHERE school_id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $user);
+        $stmt->bind_param("s", $identifier);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             // Verify password
             if (password_verify($pass, $row['password'])) {
-                $_SESSION['email'] = $user;
+                $_SESSION['identifier'] = $identifier;
                 $_SESSION['role'] = $role;
                 if ($role == 'faculty_list') {
                     $_SESSION['f_id'] = $row['f_id']; // Save f_id for faculty
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } elseif ($role == 'faculty_list') {
                     header("Location: teacherDesign.php");
                 } else {
-                    header("Location: student/student.php");
+                    header("Location: student/dashboard.php");
                 }
                 $user_found = true;
                 exit;
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!$user_found) {
         $error_message = "No user found.";
-        $email_error = true;
+        $id_error = true;
     }
 }
 
@@ -89,15 +89,14 @@ $conn->close();
     </style>
 </head>
 <body>
-    
     <div class="container">
         <form action="" method="POST" class="sign-up-form">
             <img class="logo" src="img/logo.png">
             <h2 class="title">FACULTY EVALUATION SYSTEM</h2>
             <div class="input-field">
                 <i class="fas fa-user"></i>
-                <input type="text" name="email" placeholder="Email" required 
-                    class="<?= $email_error ? 'invalid-input' : '' ?>" />
+                <input type="text" name="identifier" placeholder="School ID or Email" required 
+                    class="<?= $id_error ? 'invalid-input' : '' ?>" />
             </div>
             <div class="input-field">
                 <i class="fas fa-lock"></i>

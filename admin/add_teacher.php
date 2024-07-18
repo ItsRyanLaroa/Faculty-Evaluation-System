@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastname = $_POST['lastname'];
     $id = $_POST['id'];
 
-    $sql = "INSERT INTO teachers (firstname, lastname, id) VALUES ('$firstname', '$lastname', '$id')";
+    $sql = "INSERT INTO teachers (firstname, lastname, T_id) VALUES ('$firstname', '$lastname', '$id')";
     if ($conn->query($sql) === TRUE) {
         echo json_encode(["id" => $id, "firstname" => $firstname, "lastname" => $lastname]);
     } else {

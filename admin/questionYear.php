@@ -89,7 +89,7 @@
     <div class="row3">
         <div class="column3">
             <div class="card3">
-                <button class="btn" onclick="document.getElementById('addEvalModal').style.display='block'">+Add New</button>
+              
                 <div class="search-container">
                     <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for classes..">
                     <button onclick="searchTable()"><i class="fas fa-search"></i></button>
@@ -121,7 +121,7 @@
                         $semester = $_POST['semester'];
                         $status = $_POST['status'];
 
-                        $sql = "INSERT INTO evaluations (year, semester, status) VALUES (?, ?, ?)";
+                        $sql = "INSERT INTO academic_year (year, semester, status) VALUES (?, ?, ?)";
                         $stmt = $conn->prepare($sql);
                         $stmt->bind_param("sss", $year, $semester, $status);
 
@@ -134,7 +134,7 @@
                         $stmt->close();
                     }
 
-                    $sql = "SELECT id, year, semester, status FROM evaluations";
+                    $sql = "SELECT id, year, semester, status FROM academic_year";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {

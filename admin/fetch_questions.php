@@ -23,9 +23,8 @@ if ($result->num_rows > 0) {
                 echo '</div>';
             }
             $currentCriteria = $row['criteria'];
-            echo '<div class="form-group">';
-            echo "<label>{$row['criteria']}</label>";
-            echo '</div>';
+            echo '<div class="criteria-group">';
+            echo "<h4>{$row['criteria']}</h4>";
         }
         echo '<div class="form-group">';
         echo "<label>{$row['question']}</label>";

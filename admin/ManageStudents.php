@@ -176,14 +176,20 @@
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('addStudentModal').style.display='none'">&times;</span>
             <h2>Add New Student</h2>
-            <form method="POST" action="">
-                <label for="firstname">First Name:</label>
-                <input type="text" id="firstname" name="firstname" required><br>
-                <label for="lastname">Last Name:</label>
-                <input type="text" id="lastname" name="lastname" required><br>
-                <label for="class">Class:</label>
-                <input type="text" id="class" name="class" required><br>
-                <button type="submit">Submit</button>
+            <form method="POST" action="add_student.php">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" name="firstname" required>
+
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" id="lastname" name="lastname" required>
+
+                    <label for="class">Class:</label>
+                    <input type="text" id="class" name="class" required>
+
+                    <label for="school_id">School ID:</label>
+                    <input type="text" id="school_id" name="school_id" required>
+
+                    <input type="submit" value="Submit">
             </form>
         </div>
     </div>

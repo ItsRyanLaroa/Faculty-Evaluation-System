@@ -86,8 +86,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Last Name</th>
-                            <th>First Name</th>
-                            <th>ID</th>
+                            <th>First Name</th>                          
                             <th>Action</th>
                         </tr>
                         <?php
@@ -105,13 +104,13 @@
                             die("Connection failed: " . $conn->connect_error);
                         }
 
-                        $sql = "SELECT id, firstname, lastname FROM teachers";
+                        $sql = "SELECT T_id, firstname, lastname FROM teachers";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
                             // Output data of each row
                             while($row = $result->fetch_assoc()) {
-                                echo "<tr><td>" . $row["id"]. "</td><td>". $row["lastname"]. "</td><td>". $row["firstname"]. "</td><td>" . $row["id"]. "</td><td><a href='ManageStudents.php'>view</a><button class='icon-btn'><i class='fas fa-edit'></i></button><button class='icon-btn'><i class='fas fa-trash'></i></button></td></tr>";
+                                echo "<tr><td>" . $row["T_id"]. "</td><td>". $row["lastname"]. "</td><td>". $row["firstname"]. "</td><td><a href='ManageStudents.php'>view</a><button class='icon-btn'><i class='fas fa-edit'></i></button><button class='icon-btn'><i class='fas fa-trash'></i></button></td></tr>";
                             }
                         } else {
                             echo "<tr><td colspan='3'>No classes found</td></tr>";

@@ -15,26 +15,41 @@ if ($conn->connect_error) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $criteria = $_POST['criteria'];
     $questions = $_POST['questions'];
+    $t_id = $_POST['t_id'];
 
-    // Convert questions from textarea into an array
-    $questionsArray = array_filter(array_map('trim', explode("\n", $questions)));
-
-    if (count($questionsArray) > 10) {
-        echo "You can only upload a maximum of 10 questions per criteria.";
-        exit;
+    // Validate T_id
+    if (empty($t_id) || !is_numeric($t_id)) {
+        die("Invalid Teacher ID.");
     }
 
-    // Prepare and bind
-    $stmt = $conn->prepare("INSERT INTO questions (criteria, question) VALUES (?, ?)");
+    // Split the questions by new line
+    $questionsArray = explode("\n", $questions);
 
+    // Prepare the insert statement
+    $stmt = $conn->prepare("INSERT INTO questions (criteria, question, t_id) VALUES (?, ?, ?)");
+    if ($stmt === false) {
+        die("Prepare failed: " . $conn->error);
+    }
+
+    // Bind parameters
+    $stmt->bind_param("ssi", $criteria, $question, $t_id);
+
+    // Execute insert statements for each question
     foreach ($questionsArray as $question) {
-        $stmt->bind_param("ss", $criteria, $question);
-        $stmt->execute();
+        $question = trim($question);
+        if (!empty($question)) {
+            if (!$stmt->execute()) {
+                die("Execute failed: " . $stmt->error);
+            }
+        }
     }
 
-    header('Location: questionnaire.php');
+    // Close statement and connection
     $stmt->close();
-}
+    $conn->close();
 
-$conn->close();
+    // Redirect to manage_questionnaire.php
+    header("Location: questionnaire.php");
+    exit;
+}
 ?>
