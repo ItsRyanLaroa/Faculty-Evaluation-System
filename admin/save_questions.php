@@ -15,24 +15,18 @@ if ($conn->connect_error) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $criteria = $_POST['criteria'];
     $questions = $_POST['questions'];
-    $t_id = $_POST['t_id'];
-
-    // Validate T_id
-    if (empty($t_id) || !is_numeric($t_id)) {
-        die("Invalid Teacher ID.");
-    }
 
     // Split the questions by new line
     $questionsArray = explode("\n", $questions);
 
     // Prepare the insert statement
-    $stmt = $conn->prepare("INSERT INTO questions (criteria, question, t_id) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO questions (criteria, question) VALUES (?, ?)");
     if ($stmt === false) {
         die("Prepare failed: " . $conn->error);
     }
 
     // Bind parameters
-    $stmt->bind_param("ssi", $criteria, $question, $t_id);
+    $stmt->bind_param("ss", $criteria, $question);
 
     // Execute insert statements for each question
     foreach ($questionsArray as $question) {

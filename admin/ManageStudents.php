@@ -80,17 +80,8 @@
     <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
 
     <!-- Side navigation menu -->
-    <div class="sidenav" id="mySidenav">
-        <img class="logo" src="../img/logo.png">
-        <a href="admin.php"><i class="fas fa-desktop"></i>  Dashboard</a>
-        <a href="classes.php"><i class="fas fa-users"></i>  Classes</a>
-        <a href="year.php"><i class="fas fa-calendar"></i>  Academic Year</a>
-        <a href="questionYear.php"><i class="fas fa-question-circle"></i>  Questioner</a>
-        <a href="classes.php"><i class="fas fa-check-circle"></i>  Evaluation Criteria</a>
-        <hr>
-        <a href="../index.php"><i class="fas fa-sign-out-alt"></i>  Log out</a>
-    </div>
-
+ 
+    <?php include 'sidebar.php'; ?>
     <!-- Page content -->
     <div class="main content">
          <h2>Class List</h2>

@@ -74,37 +74,75 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in</title>
-    <link rel="stylesheet" href="Css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Responsive Website in HTML CSS</title>
+    <link rel="stylesheet" href="Css/login.css" />
+    <script src="../custom-scripts.js" defer></script>
     <style>
-        .invalid-input {
-            border: 2px solid red;
-        }
+      .invalid-input {
+        border: 1px solid red;
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <form action="" method="POST" class="sign-up-form">
-            <img class="logo" src="img/logo.png">
-            <h2 class="title">FACULTY EVALUATION SYSTEM</h2>
-            <div class="input-field">
-                <i class="fas fa-user"></i>
-                <input type="text" name="identifier" placeholder="School ID or Email" required 
-                    class="<?= $id_error ? 'invalid-input' : '' ?>" />
-            </div>
-            <div class="input-field">
-                <i class="fas fa-lock"></i>
-                <input type="password" name="password" placeholder="Password" required 
-                    class="<?= $password_error ? 'invalid-input' : '' ?>" />
-            </div>      
-            <input type="submit" class="btn" value="Log in" />
+  </head>
+  <body>
+    <main>
+      <!-- Header Start -->
+      <header>
+        <nav class="nav container">
+          <h2 class="nav_logo"><a href="#">Faculty Evaluation System</a></h2>
+          <ul class="menu_items">
+            <li><a href="index.php" class="nav_link">Login</a></li>
+            <li><a href="register.php" class="nav_link">Register</a></li>
+          </ul>
+          <img src="images/bars.svg" alt="timesicon" id="menu_toggle" />
+        </nav>
+      </header>
+      <div class="loginContainer">
+        <form action="index.php" method="POST" class="sign-up-form">
+          <img class="logo" src="images/file.png" width="200px" />
+          <h2 class="title">FACULTY EVALUATION SYSTEM</h2>
+          <br>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input
+              type="text"
+              name="identifier"
+              placeholder="School ID or Email"
+              required
+              class="<?= $id_error ? 'invalid-input' : '' ?>"
+            />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              class="<?= $password_error ? 'invalid-input' : '' ?>"
+            />
+          </div>
+       
+          <input type="submit" class="btn" value="Log in" />
         </form>
-    </div>
-</body>
+      </div>
+      <!-- Header End -->
+
+      <!-- Hero Start -->
+
+      <!-- Hero End-->
+    </main>
+
+    <script>
+      const header = document.querySelector('header')
+      const menuToggler = document.querySelectorAll('#menu_toggle')
+
+      menuToggler.forEach(toggler => {
+        toggler.addEventListener('click', () =>
+          header.classList.toggle('showMenu')
+        )
+      })
+    </script>
+  </body>
 </html>

@@ -12,32 +12,32 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT criteria, question FROM questions";
+// Query to fetch criteria and their associated questions
+$sql = "SELECT criteria, GROUP_CONCAT(question ORDER BY id SEPARATOR '||') as questions FROM questions GROUP BY criteria";
 $result = $conn->query($sql);
 
-$currentCriteria = null;
 if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        if ($currentCriteria !== $row['criteria']) {
-            if ($currentCriteria !== null) {
-                echo '</div>';
+    while ($row = $result->fetch_assoc()) {
+        echo '<div class="criteria-group">';
+        echo "<h4>{$row['criteria']}</h4>";
+        
+        // Split the concatenated questions
+        $questions = explode('||', $row['questions']);
+        foreach ($questions as $question) {
+            echo '<div class="form-group">';
+            echo "<label>{$question}</label>";
+            echo '<div class="radio-group">';
+            for ($i = 1; $i <= 5; $i++) {
+                echo '<label>';
+                echo "<input type=\"radio\" name=\"{$row['criteria']}-rating-{$question}\" value=\"$i\" required> $i";
+                echo '</label>';
             }
-            $currentCriteria = $row['criteria'];
-            echo '<div class="criteria-group">';
-            echo "<h4>{$row['criteria']}</h4>";
+            echo '</div>';
+            echo '</div>';
         }
-        echo '<div class="form-group">';
-        echo "<label>{$row['question']}</label>";
-        echo '<div class="radio-group">';
-        for ($i = 1; $i <= 5; $i++) {
-            echo '<label>';
-            echo "<input type=\"radio\" name=\"{$row['criteria']}-rating-{$row['question']}\" value=\"$i\" required> $i";
-            echo '</label>';
-        }
-        echo '</div>';
+
         echo '</div>';
     }
-    echo '</div>';
 } else {
     echo "No questions found.";
 }

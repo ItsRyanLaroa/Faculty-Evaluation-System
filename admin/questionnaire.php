@@ -122,10 +122,6 @@
                         <div class="form-group">
                             <textarea name="questions" id="questions" rows="4" placeholder="Enter questions (one per line)" required></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="t_id">Teacher ID</label>
-                            <input type="text" id="t_id" name="t_id" required>
-                        </div>
                         <button type="submit">Save</button>
                     </form>
                 </div>

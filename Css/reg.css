@@ -1,0 +1,299 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../images/img.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+form {
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: rgba(189, 169, 169, 0.5); */
+  z-index: -1;
+  border-radius: 8px;
+}
+
+form .title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.input-field {
+  width: calc(100% / 2 - 10px);
+  margin-bottom: 15px;
+}
+
+.input-field label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.input-field input,
+.input-field select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  font-size: 14px;
+}
+
+input[type='date'] {
+  color: #707070;
+}
+
+input[type='date']:valid {
+  color: #333;
+}
+
+button.submit {
+  background-color: #4070f4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.submit:hover {
+  background-color: #265df2;
+}
+
+@media (max-width: 600px) {
+  .input-field {
+    width: 100%;
+  }
+
+  form {
+    padding: 20px;
+  }
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  background-color: red;
+}
+.nav_logo {
+  padding: 10px 0;
+}
+.menu_items {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+main {
+  background: #f21074;
+  background-image: url(images/img.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+.container {
+  max-width: 1700px;
+  width: 100%;
+  margin: 0 auto;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  background-color: red;
+}
+.nav_logo {
+  padding: 10px 0;
+}
+.menu_items {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+.curveImg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  pointer-events: none;
+}
+.hero .row {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  padding: 0 60px;
+  gap: 30px;
+  justify-content: space-between;
+}
+.hero .row h2,
+.hero .row p {
+  color: #fff;
+}
+.hero .row h2 {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+.hero .column {
+  width: 50%;
+}
+.buttons {
+  display: flex;
+  margin-top: 25px;
+  gap: 10px;
+}
+
+.hero_img {
+  width: 450px;
+  z-index: 10;
+  position: relative;
+}
+#menu_toggle {
+  display: none;
+}
+
+/* Reponsive */
+@media (width < 860px) {
+  #menu_toggle {
+    display: block;
+  }
+  .nav {
+    padding: 0 20px;
+    background-color: #fff;
+  }
+
+  .menu_items {
+    position: fixed;
+    top: 0;
+    width: 260px;
+    background-color: #fff;
+    height: 100%;
+    left: -100%;
+    padding: 50px 30px 30px;
+    flex-direction: column;
+    transition: all 0.5s ease;
+  }
+  .showMenu .menu_items {
+    left: 0;
+  }
+  a {
+    color: #333;
+  }
+  #menu_toggle {
+    width: 20px;
+    cursor: pointer;
+  }
+  .menu_items #menu_toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  .hero {
+    padding-top: 130px;
+  }
+  .hero .row {
+    flex-direction: column;
+    padding: 0 20px;
+    justify-content: center;
+  }
+  .hero .row .column {
+    width: 100%;
+  }
+}
+
+@media (width < 600px) {
+  .hero {
+    padding-top: 80px;
+  }
+  .hero .row h2 {
+    font-size: 26px;
+  }
+  .buttons {
+    justify-content: center;
+  }
+  .btn {
+    padding: 10px 16px;
+  }
+}

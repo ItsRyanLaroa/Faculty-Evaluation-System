@@ -110,7 +110,7 @@
                         if ($result->num_rows > 0) {
                             // Output data of each row
                             while($row = $result->fetch_assoc()) {
-                                echo "<tr><td>" . $row["T_id"]. "</td><td>". $row["lastname"]. "</td><td>". $row["firstname"]. "</td><td><a href='ManageStudents.php'>view</a><button class='icon-btn'><i class='fas fa-edit'></i></button><button class='icon-btn'><i class='fas fa-trash'></i></button></td></tr>";
+                                echo "<tr><td>" . $row["T_id"]. "</td><td>". $row["lastname"]. "</td><td>". $row["firstname"]. "</td><td><button class='icon-btn'><i class='fas fa-edit'></i></button><button class='icon-btn'><i class='fas fa-trash'></i></button></td></tr>";
                             }
                         } else {
                             echo "<tr><td colspan='3'>No classes found</td></tr>";

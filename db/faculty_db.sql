@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2024 at 03:07 PM
+-- Generation Time: Jul 21, 2024 at 03:15 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -134,21 +134,15 @@ CREATE TABLE `faculty_list` (
 CREATE TABLE `questions` (
   `id` int(11) NOT NULL,
   `criteria` varchar(255) NOT NULL,
-  `question` text NOT NULL,
-  `T_id` int(255) NOT NULL
+  `question` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`id`, `criteria`, `question`, `T_id`) VALUES
-(7, 'Criteria 102', 'first question', 1119234324),
-(8, 'Criteria 101', 'second question', 12232434),
-(9, 'Criteria 102', 'next question', 1119234324),
-(10, 'Criteria 102', 'qewewqe', 1119234324),
-(11, 'Criteria 101', 'rew', 12232434),
-(12, 'Criteria 101', 'ewew', 1119234324);
+INSERT INTO `questions` (`id`, `criteria`, `question`) VALUES
+(22, 'Criteria 101', 'first question');
 
 -- --------------------------------------------------------
 
@@ -183,16 +177,16 @@ INSERT INTO `students` (`id`, `school_id`, `password`, `firstname`, `lastname`, 
 CREATE TABLE `teachers` (
   `T_id` int(255) NOT NULL,
   `firstname` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL
+  `lastname` varchar(255) NOT NULL,
+  `qs_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `teachers`
 --
 
-INSERT INTO `teachers` (`T_id`, `firstname`, `lastname`) VALUES
-(12232434, 'mike', 'Bustamante'),
-(1119234324, 'John', 'Ernest');
+INSERT INTO `teachers` (`T_id`, `firstname`, `lastname`, `qs_id`) VALUES
+(1119234324, 'John', 'Ernest', 0);
 
 --
 -- Indexes for dumped tables
@@ -234,8 +228,7 @@ ALTER TABLE `evaluations`
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `T_id` (`T_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `students`
@@ -247,7 +240,8 @@ ALTER TABLE `students`
 -- Indexes for table `teachers`
 --
 ALTER TABLE `teachers`
-  ADD PRIMARY KEY (`T_id`);
+  ADD PRIMARY KEY (`T_id`),
+  ADD KEY `qs_id` (`qs_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -287,7 +281,7 @@ ALTER TABLE `evaluations`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `students`
@@ -305,12 +299,6 @@ ALTER TABLE `students`
 ALTER TABLE `evaluations`
   ADD CONSTRAINT `evaluations_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`T_id`),
   ADD CONSTRAINT `evaluations_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`);
-
---
--- Constraints for table `questions`
---
-ALTER TABLE `questions`
-  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`T_id`) REFERENCES `teachers` (`T_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
