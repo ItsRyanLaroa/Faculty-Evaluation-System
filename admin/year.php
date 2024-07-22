@@ -40,7 +40,7 @@
             display: none;
             position: fixed;
             z-index: 1;
-            padding-top: 100px;
+            padding-top: 60px;
             left: 0;
             top: 0;
             width: 100%;
@@ -50,14 +50,18 @@
             background-color: rgba(0,0,0,0.4);
         }
         .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
+            background-color: #ffff;
+            margin: 65px auto;
+            padding: 40px;
             border: 1px solid #888;
-            width: 80%;
+            width: 300px;
+            height: 36vh;
+            border-radius: 4px;
+            overflow: hidden;
+           
         }
         .close {
-            color: #aaa;
+            color: red;
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -68,6 +72,57 @@
             text-decoration: none;
             cursor: pointer;
         }
+       
+        .input{
+            border-radius: 4px;
+            padding: 10px;
+            width: 270px;
+            margin-bottom: 10px;
+            overflow: hidden;
+     
+        }
+        .button {
+        display: inline-block;
+        border-radius: 7px;
+        border: none;
+        background: #1875FF;
+        color: white;
+        font-family: inherit;
+        text-align: center;
+        font-size: 13px;
+        box-shadow: 0px 14px 56px -11px #1875FF;
+        width: 10em;
+        padding: 1em;
+        transition: all 0.4s;
+        cursor: pointer;
+        float:right;
+        margin:10px;
+        }
+/* 
+        .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.4s;
+        }
+
+        .button span:after {
+        content: 'for free';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.7s;
+        }
+
+        .button:hover span {
+        padding-right: 3.55em;
+        }
+
+        .button:hover span:after {
+        opacity: 4;
+        right: 0;
+        } */
     </style>
 </head>
 <body>
@@ -78,7 +133,7 @@
 
     <!-- Page content -->
     <div class="main content">
-        <h2>Class List</h2>
+        <h2>Academic Year</h2>
         <hr>
         <div class="row3">
             <div class="column3">
@@ -92,7 +147,7 @@
                     </div>
                     <!-- Table for displaying evaluations -->
                     <table>
-                        <tr>
+                    <tr style="border: 3px #b22222 solid;/* background-color: #333; */padding: 20px;">
                             <th>No.</th>
                             <th>Year</th>
                             <th>Semester</th>
@@ -169,14 +224,12 @@
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('addEvalModal').style.display='none'">&times;</span>
             <h2>Add New Evaluation</h2>
+            <hr>
             <form method="POST" action="">
-                <label for="year">Year:</label>
-                <input type="text" id="year" name="year" required><br>
-                <label for="semester">Semester:</label>
-                <input type="text" id="semester" name="semester" required><br>
-                <label for="status">Evaluation Status:</label>
-                <input type="text" id="status" name="status" required><br>
-                <button type="submit">Submit</button>
+                <input class="input" type="text" id="year" name="year" placeholder="Year" required><br>
+                <input class="input" type="text" id="semester" name="semester" placeholder="Semester" required><br>
+                <input class="input" type="text" id="status" name="status" placeholder="Status" required><br>
+                <button class="button" type="submit" style="vertical-align:middle"><span>Save</span></button>
             </form>
         </div>
     </div>

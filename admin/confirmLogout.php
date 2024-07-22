@@ -74,7 +74,7 @@
 }
 .popup input[type="submit"] {
     padding: 5px 10px;
-    background: red;
+    background: #b22222;
     color: rgb(241, 231, 231);
     border: none;
     border-radius: 5px;

@@ -9,6 +9,22 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        .view{
+            display: inline-block;
+        border-radius: 7px;
+        border: none;
+        background: #1875FF;
+        color: white;
+        font-family: inherit;
+        text-align: center;
+        font-size: 13px;
+        box-shadow: 0px 14px 56px -11px #1875FF;
+        width: 5em;
+        padding: 1em;
+        transition: all 0.4s;
+        cursor: pointer;
+            text-decoration: none;
+        }
         .card3 table {
             width: 100%;
             border-collapse: collapse;
@@ -49,14 +65,16 @@
             background-color: rgba(0,0,0,0.4);
         }
         .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
+            background-color: #ffff;
+            margin: 65px auto;
+            padding: 40px;
             border: 1px solid #888;
-            width: 80%;
+            width: 300px;
+            height: 20vh;
+            border-radius: 4px;
         }
         .close {
-            color: #aaa;
+            color: red;
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -67,6 +85,54 @@
             text-decoration: none;
             cursor: pointer;
         }
+       
+        .input{
+            border-radius: 4px;
+            padding: 10px;
+            width: 270px;
+        }
+        .button {
+        display: inline-block;
+        border-radius: 7px;
+        border: none;
+        background: #1875FF;
+        color: white;
+        font-family: inherit;
+        text-align: center;
+        font-size: 13px;
+        box-shadow: 0px 14px 56px -11px #1875FF;
+        width: 10em;
+        padding: 1em;
+        transition: all 0.4s;
+        cursor: pointer;
+        float:right;
+        margin:10px;
+        }
+
+        /* .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.4s;
+        }
+
+        .button span:after {
+        content: '=>';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.7s;
+        } */
+
+        /* .button:hover span {
+        padding-right: 3.55em;
+        }
+
+        .button:hover span:after {
+        opacity: 4;
+        right: 0;
+        } */
     </style>
 </head>
 <body>
@@ -84,7 +150,7 @@
                         <button onclick="searchTable()"><i class="fas fa-search"></i></button>
                     </div>
                     <table id="classTable">
-                        <tr>
+                    <tr style="border: 3px #b22222 solid;/* background-color: #333; */padding: 20px;">
                             <th>No.</th>
                             <th>Class</th>
                             <th>Action</th>
@@ -110,7 +176,7 @@
                         if ($result->num_rows > 0) {
                             // Output data of each row
                             while($row = $result->fetch_assoc()) {
-                                echo "<tr><td>" . $row["id"]. "</td><td>" . $row["name"]. "</td><td><a href='ManageStudents.php'>view</a><button class='icon-btn'><i class='fas fa-edit'></i></button><button class='icon-btn'><i class='fas fa-trash'></i></button></td></tr>";
+                                echo "<tr><td>" . $row["id"]. "</td><td>" . $row["name"]. "</td><td><a href='ManageStudents.php' class='view'>view</a><button class='icon-btn'><i class='fas fa-edit'></i></button><button class='icon-btn'><i class='fas fa-trash'></i></button></td></tr>";
                             }
                         } else {
                             echo "<tr><td colspan='3'>No classes found</td></tr>";
@@ -129,10 +195,10 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Add New Class</h2>
+            <hr>
             <form id="addClassForm">
-                <label for="className">Class Name:</label>
-                <input type="text" id="className" name="className" required>
-                <button type="submit">Add Class</button>
+                <input type="text" id="className" name="className" class="input" placeholder="Class Name" required>
+                <button class="button" type="submit" style="vertical-align:middle"><span>Save</span></button>
             </form>
         </div>
     </div>

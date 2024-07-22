@@ -1,5 +1,5 @@
 body {
-  font-family: math;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -11,7 +11,7 @@ body {
   position: fixed;
   z-index: 1;
   left: 0;
-  background-color: rgb(172, 47, 19);
+  background-color: #b22222;
   overflow-x: hidden;
   transition: 0.3s;
 }
@@ -43,10 +43,7 @@ body {
   padding: 20px;
   transition: margin-left 0.3s; /* Smooth transition when sidenav width changes */
 }
-hr {
-  background-color: black;
-  height: 8px;
-}
+
 .active {
   background-color: rgb(208, 75, 45);
   color: white;

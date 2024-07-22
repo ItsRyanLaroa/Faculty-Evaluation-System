@@ -74,6 +74,45 @@
             text-decoration: none;
             cursor: pointer;
         }
+        .view{
+            background-color:red;
+            padding:5px;
+            border-radius:5px;
+            color: black;
+            text-decoration: none;
+        }
+        .button {
+        display: inline-block;
+        border-radius: 7px;
+        border: none;
+        background: #1875FF;
+        color: white;
+        font-family: inherit;
+        text-align: center;
+        font-size: 13px;
+        box-shadow: 0px 14px 56px -11px #1875FF;
+        width: 10em;
+        padding: 1em;
+        transition: all 0.4s;
+        cursor: pointer;
+        text-decoration: none;
+        }
+
+        .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.4s;
+        }
+
+        .button span:after {
+        content: 'for free';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.7s;
+        }
     </style>
 </head>
 <body>
@@ -146,7 +185,7 @@
                                 <td>" . $row["semester"]. "</td>
                                 <td>" . $row["status"]. "</td>
                                 <td>
-                                    <a href='questionnaire.php'>Manage Question</a>
+                                    <a class='button' href='questionnaire.php'>Manage Question</a>
                                 </td>
                             </tr>";
                         }

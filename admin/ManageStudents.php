@@ -36,44 +36,93 @@
         .icon-btn .fa-trash {
             color: red;
         }
-        /* The Modal (background) */
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            padding-top: 100px; /* Location of the box */
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60px;
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
         }
-
-        /* Modal Content/Box */
         .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
+            background-color: #ffff;
+            margin: 65px auto;
+            padding: 40px;
             border: 1px solid #888;
-            width: 80%;
+            width: 300px;
+            height: 44vh;
+            border-radius: 4px;
+            overflow: hidden;
+           
         }
-
-        /* The Close Button */
         .close {
-            color: #aaa;
+            color: red;
             float: right;
             font-size: 28px;
             font-weight: bold;
         }
-
         .close:hover,
         .close:focus {
             color: black;
             text-decoration: none;
             cursor: pointer;
         }
+       
+        .input{
+            border-radius: 4px;
+            padding: 10px;
+            width: 270px;
+            margin-bottom: 10px;
+            overflow: hidden;
+     
+        }
+        .button {
+        display: inline-block;
+        border-radius: 7px;
+        border: none;
+        background: #1875FF;
+        color: white;
+        font-family: inherit;
+        text-align: center;
+        font-size: 13px;
+        box-shadow: 0px 14px 56px -11px #1875FF;
+        width: 10em;
+        padding: 1em;
+        transition: all 0.4s;
+        cursor: pointer;
+        float:right;
+        margin:10px;
+        }
+/* 
+        .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.4s;
+        }
+
+        .button span:after {
+        content: 'for free';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.7s;
+        }
+
+        .button:hover span {
+        padding-right: 3.55em;
+        }
+
+        .button:hover span:after {
+        opacity: 4;
+        right: 0;
+        } */
     </style>
 </head>
 <body>
@@ -95,11 +144,11 @@
                         <button onclick="searchTable()"><i class="fas fa-search"></i></button>
                     </div>
                     <table>
-                        <tr>
+                    <tr style="border: 3px #b22222 solid;/* background-color: #333; */padding: 20px;">
                             <th>ID</th>
-                            <th>firstname</th>
-                            <th>lastname</th>
-                            <th>class</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Class</th>
                             <th>Action</th>
                         </tr>
                         <?php
@@ -167,20 +216,17 @@
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('addStudentModal').style.display='none'">&times;</span>
             <h2>Add New Student</h2>
+            <hr>
             <form method="POST" action="add_student.php">
-                    <label for="firstname">First Name:</label>
-                    <input type="text" id="firstname" name="firstname" required>
+                    <input class="input" type="text" id="firstname" name="firstname"  placeholder="Last Name"required>
 
-                    <label for="lastname">Last Name:</label>
-                    <input type="text" id="lastname" name="lastname" required>
+                    <input  class="input" type="text" id="lastname" name="lastname"  placeholder="Last Name" required>
 
-                    <label for="class">Class:</label>
-                    <input type="text" id="class" name="class" required>
+                    <input class="input" type="text" id="class" name="class"  placeholder="Last Name" required>
 
-                    <label for="school_id">School ID:</label>
-                    <input type="text" id="school_id" name="school_id" required>
+                    <input class="input" type="text" id="school_id" name="school_id" placeholder="Last Name" required>
 
-                    <input type="submit" value="Submit">
+                    <button class="button" type="submit" style="vertical-align:middle"><span>Save</span></button>
             </form>
         </div>
     </div>
